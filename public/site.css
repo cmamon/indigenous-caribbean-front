@@ -1,20 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 .mapContainer {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.7);
 }
 
 .sidebarStyle {
   display: inline-block;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 5px;
+  left: 5px;
   margin: 12px;
   background-color: #404040;
   color: #ffffff;
   z-index: 1 !important;
-  padding: 6px;
-  font-weight: bold;
+  padding: 8px;
+  font-family: 'Roboto Slab', serif;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.8);
 }

@@ -1,26 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiY21hbW9uIiwiYSI6ImNraHBrNWxyZzAxZWQycG56cWdpbGo4cHEifQ.osCGG7Jk4ZTa5wCNFN6Oow';
+import dotenv from 'dotenv';
 
 class Application extends React.Component {
   constructor(props) {
+    var maxBounds = [
+      [-100.608744, 0.5], // Southwest coordinates
+      [-42.391255, 31] // Northeast coordinates
+    ];
+
     super(props);
     this.state = {
-      lng: -67,
-      lat: 19,
+      lng: -68,
+      lat: 18,
+      zoom: 4.25,
       minZoom: 4.25,
-      zoom: 4.25
+      maxBounds: maxBounds
     };
   }
 
-  componentDidMount() {
+  componentDidMount() { 
+    dotenv.config();
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/light-v10',
       center: [this.state.lng, this.state.lat],
-      zoom: this.state.zoom
+      zoom: this.state.zoom,
+      minZoom: this.state.minZoom,
+      maxBounds: this.state.maxBounds
     });
 
     map.on('move', () => {
